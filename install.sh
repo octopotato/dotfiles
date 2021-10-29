@@ -6,10 +6,10 @@
 
 ########## Variables
 
-dir=~/dotfiles                              # dotfiles directory
-olddir=~/dotfiles_old                       # old dotfiles backup directory
-zshcustomsdir=~/.oh-my-zsh/custom/          # ohmyzsh plugins directory
-files="bashrc vimrc zshrc"                  # list of files/folders to symlink in homedir
+dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)     # dotfiles directory
+olddir=~/dotfiles_old                               # old dotfiles backup directory
+zshcustomsdir=~/.oh-my-zsh/custom/                  # ohmyzsh plugins directory
+files="bashrc vimrc zshrc"                          # list of files/folders to symlink in homedir
 
 ##########
 
