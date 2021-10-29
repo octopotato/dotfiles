@@ -9,7 +9,7 @@
 dir=~/dotfiles                              # dotfiles directory
 olddir=~/dotfiles_old                       # old dotfiles backup directory
 zshcustomsdir=~/.oh-my-zsh/custom/          # ohmyzsh plugins directory
-files="bashrc vimrc zshrc"              # list of files/folders to symlink in homedir
+files="bashrc vimrc zshrc"                  # list of files/folders to symlink in homedir
 
 ##########
 
@@ -17,19 +17,6 @@ files="bashrc vimrc zshrc"              # list of files/folders to symlink in ho
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
 echo "...done"
-
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    if [[ -f ~/.$file ]];then
-        echo "Moving any existing dotfiles from ~ to $olddir"
-        mv ~/.$file ~/dotfiles_old/
-    fi
-done
 
 install_oh_my_zsh () {
 # Test to see if zshell is installed.  If it is:
@@ -49,7 +36,7 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+    if [[ $CODESPACES != "true" && ! $(echo $SHELL) == $(which zsh) ]]; then
         chsh -s $(which zsh)
     fi
 fi
@@ -57,13 +44,14 @@ fi
 
 install_oh_my_zsh
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then symlink new ones
+echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
     if [[ -f ~/.$file ]];then
-        echo "Moving any existing dotfiles from ~ to $olddir"
-        mv ~/.$file /tmp/
+        echo "Moving ~/.$file to $olddir"
+        mv ~/.$file ~/dotfiles_old/
     fi
 
-    echo "Copying to $file in home directory."
-    cp $dir/$file ~/.$file
+    echo "Creating symlink for $dir/$file in home directory ~/.$file"
+    ln -s $dir/$file ~/.$file
 done
