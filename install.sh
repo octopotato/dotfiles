@@ -53,5 +53,5 @@ for file in $files; do
     fi
 
     echo "Creating symlink for $dir/$file in home directory ~/.$file"
-    ln -s $dir/$file ~/.$file
+    ln -fs $dir/$file ~/.$file
 done
