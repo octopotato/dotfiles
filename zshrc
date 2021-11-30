@@ -77,7 +77,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  osx
+  macos
   rake
   rbenv
   ruby
@@ -143,6 +143,7 @@ function ccd() {
 alias gprune='git fetch --prune origin && git remote prune origin && git prune && git gc'
 alias rdm='bin/rake db:migrate db:test:prepare'
 alias rlint='git status -s | cut -d" " -f3 | xargs bin/rubocop'
+alias rt='rails test'
 alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject alambic'
 # function gd() {
 #     if ! git branch -d $1; then
