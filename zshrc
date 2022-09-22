@@ -144,7 +144,9 @@ alias gprune='git fetch --prune origin && git remote prune origin && git prune &
 alias rdm='bin/rake db:migrate db:test:prepare'
 alias rlint='git status -s | cut -d" " -f3 | xargs bin/rubocop'
 alias rt='rails test'
+alias rtaf='TEST_ALL_FEATURES=1 rails test'
 alias rtc='rails test_changes'
+alias rtcaf='TEST_ALL_FEATURES=1 rails test_changes'
 alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject alambic'
 # function gd() {
 #     if ! git branch -d $1; then
