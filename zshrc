@@ -147,9 +147,12 @@ alias rt='rails test'
 alias rtaf='TEST_ALL_FEATURES=1 rails test'
 alias rtc='rails test_changes'
 alias rtcaf='TEST_ALL_FEATURES=1 rails test_changes'
+alias rtac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test'
+alias rtcac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test_changes'
 alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject alambic'
 alias gbdd='gbd -D'
 alias soe='bin/serviceowners --explain'
+alias dserver='server --debug --dap'
 # function gd() {
 #     if ! git branch -d $1; then
 #         gdf $1
