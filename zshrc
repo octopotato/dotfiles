@@ -105,7 +105,7 @@ fi
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='code --wait'
 fi
 
 # Compilation flags
@@ -130,16 +130,6 @@ function ccd() {
 }
 
 ## Git
-# alias gco='git checkout'
-# alias gm='git merge'
-# alias gr='git rebase'
-# alias gb='git branch'
-# alias gs='git status'
-# alias ga='git add'
-# alias gc='git commit'
-# alias gcl='git clone'
-# alias gpul='git pull --rebase'
-# alias gpush='git push -u'
 alias gprune='git fetch --prune origin && git remote prune origin && git prune && git gc'
 alias rdm='bin/rake db:migrate db:test:prepare'
 alias rlint='git status -s | cut -d" " -f3 | xargs bin/rubocop'
