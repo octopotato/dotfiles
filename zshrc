@@ -143,6 +143,7 @@ alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject al
 alias gbdd='gbd -D'
 alias soe='bin/serviceowners --explain'
 alias dserver='server --debug --dap'
+alias tcp-ports='lsof -i -n -P | grep TCP | grep :80 | grep nginx | awk '{print $2}' | xargs -I{} kill -9 {}'
 # function gd() {
 #     if ! git branch -d $1; then
 #         gdf $1
