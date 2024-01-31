@@ -7,6 +7,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=/usr/local/opt/ruby/bin:/usr/local/bin:$HOME/bin:$HOME/enlistment/github/bin:/workspaces/github/bin:$PATH
+export PATH=vendor/ruby/current/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -134,16 +135,22 @@ alias gprune='git fetch --prune origin && git remote prune origin && git prune &
 alias rdm='bin/rake db:migrate db:test:prepare'
 alias rlint='git status -s | cut -d" " -f3 | xargs bin/rubocop'
 alias rt='rails test'
+alias rtac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test'
 alias rtaf='TEST_ALL_FEATURES=1 rails test'
 alias rtc='rails test_changes'
-alias rtcaf='TEST_ALL_FEATURES=1 rails test_changes'
-alias rtac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test'
 alias rtcac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test_changes'
+alias rtcaf='TEST_ALL_FEATURES=1 rails test_changes'
+alias rto='rails test_oracle --run'
+alias rtoac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test_oracle --run'
+alias rtoaf='TEST_ALL_FEATURES=1 rails test_oracle --run'
 alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject alambic'
 alias gbdd='gbd -D'
 alias soe='bin/serviceowners --explain'
 alias dserver='server --debug --dap'
+alias dxserver-start='script/dx/server-start'
+alias dxserver-stop='script/dx/server-stop'
 alias tcp-ports='lsof -i -n -P | grep TCP | grep :80 | grep nginx | awk '{print $2}' | xargs -I{} kill -9 {}'
+alias install-ruby-lsp='vendor/ruby/current/bin/gem install ruby-lsp'
 # function gd() {
 #     if ! git branch -d $1; then
 #         gdf $1
