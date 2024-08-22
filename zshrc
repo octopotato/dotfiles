@@ -134,6 +134,7 @@ function ccd() {
 alias gprune='git fetch --prune origin && git remote prune origin && git prune && git gc'
 alias rdm='bin/rake db:migrate db:test:prepare'
 alias rlint='git status -s | cut -d" " -f3 | xargs bin/rubocop'
+alias rroute='rails routes -g'
 alias rt='rails test'
 alias rtac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test'
 alias rtaf='TEST_ALL_FEATURES=1 rails test'
@@ -145,12 +146,20 @@ alias rtoac='AUTOCORRECT_ALLOWED_QUERIES=1 rails test_oracle --run'
 alias rtoaf='TEST_ALL_FEATURES=1 rails test_oracle --run'
 alias ghav='rm -rf vendor/alambic/ && GO111MODULE=off script/build-subproject alambic'
 alias gbdd='gbd -D'
+alias gdref='git update-ref -d'
+
+function gtmp() {
+    "mv .git/$1 /tmp/"
+}
+
+# github
 alias soe='bin/serviceowners --explain'
 alias dserver='server --debug --dap'
 alias dxserver-start='script/dx/server-start'
 alias dxserver-stop='script/dx/server-stop'
 alias tcp-ports='lsof -i -n -P | grep TCP | grep :80 | grep nginx | awk '{print $2}' | xargs -I{} kill -9 {}'
 alias install-ruby-lsp='vendor/ruby/current/bin/gem install ruby-lsp'
+alias update-token='sed -i "s/password .*/password $GITHUB_TOKEN/g" ~/.netrc'
 # function gd() {
 #     if ! git branch -d $1; then
 #         gdf $1
