@@ -91,8 +91,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-bindkey '^I'   forward-word         # tab          | next word
-bindkey '^[[Z' autosuggest-accept   # shift + tab  | autosuggest
+# bindkey '^I'   forward-word         # tab          | next word
+# bindkey '^[[Z' autosuggest-accept   # shift + tab  | autosuggest
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
